@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch-debug",
+            "preLaunchTask": "start-debug",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "restart": true,
+            "stopOnEntry": false,
+            "protocol": "inspector"
+        }
+    ]
+}
