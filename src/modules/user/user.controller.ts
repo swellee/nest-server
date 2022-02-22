@@ -24,9 +24,9 @@ export class UserController {
         return await this.userService.signup(email, password, role)
     }
 
-    @Get()
+    @Get('info')
     @Auth(Role.NORMAL)
     async getInfo(@CurUser() user: any) {
-        return { ...user, status: 'active' }
+        return await this.userService.getInfo(user)
     }
 }

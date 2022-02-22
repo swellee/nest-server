@@ -6,6 +6,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 require('dotenv').config();
+console.log('jwtm',process.env.JWT_SECRET)
 
 @Module({
   imports: [

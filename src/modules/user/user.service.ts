@@ -39,8 +39,15 @@ export class UserService {
         profile.id = user.id
         await this.userProfileRepo.save(profile)
 
+        delete user.salt
+        delete user.password
         const token = this.authService.sign(user)
         return { user, token }
 
+    }
+
+    async getInfo(user: User) {
+        const profile = await this.userProfileRepo.findOne({ user })
+        return { ...user, ...profile }
     }
 }

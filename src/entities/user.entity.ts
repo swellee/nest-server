@@ -1,4 +1,4 @@
-import { Role } from "src/util/const";
+import { Role, UserStatus } from "src/util/const";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -17,4 +17,7 @@ export class User {
 
     @Column({ name: 'roles', enum: Role, type: 'enum', array: true })
     roles: Role[]
+
+    @Column({ name: 'status', enum: UserStatus, type: 'enum', default: UserStatus.ACTIVE })
+    status: UserStatus
 }

@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
-import { Role } from 'src/util/const';
 import { cryptoPassword } from 'src/util/crypto';
 import { Repository } from 'typeorm';
 
@@ -32,7 +31,7 @@ export class AuthService {
         return user;
     }
 
-    async sign(user: any, extra?: Record<string, string>) {
+    sign(user: any, extra?: Record<string, string>) {
         const payload = { id: user.id, email: user.email, extra }
         return this.jwtService.sign(payload)
     }
