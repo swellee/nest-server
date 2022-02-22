@@ -23,7 +23,8 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
-
+node-server startup based on Nest.js + typeorm + postgres + jwt
+### include basic user auth components
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
