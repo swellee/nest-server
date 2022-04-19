@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
+import { compareSync, hashSync } from 'bcrypt';
 import { User } from 'src/entities/user.entity';
-import { cryptoPassword } from 'src/util/crypto';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -15,18 +15,16 @@ export class AuthService {
     async validate(email: string, password: string) {
         const user = await this.userRepo.findOne({
             where: { email: email.toLocaleLowerCase() },
-            select: ['id', 'email', 'salt', 'password', 'roles']
+            select: ['id', 'email', 'password', 'roles']
         })
         if (!user) {
             throw new NotFoundException('user not found')
         }
         // verify
-        const encrypedPwd = cryptoPassword(password, user.salt)
-        if (encrypedPwd !== user.password) {
+        if (!compareSync(user.password, hashSync(password, 10))) {
             throw new NotFoundException('email or password not match')
         }
         delete user.password
-        delete user.salt
 
         return user;
     }

@@ -9,9 +9,6 @@ export class User {
     @Column({ name: 'email', type: 'varchar' })
     email: string
 
-    @Column({ name: 'salt', type: 'varchar', select: false })
-    salt: string
-
     @Column({ name: 'password', type: 'varchar', select: false })
     password: string
 
