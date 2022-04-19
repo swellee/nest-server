@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: ./dist
+    destination: /home/ubuntu/server
+  - source: ./aws_deploy/pm2.js
+    destination: /home/ubuntu/server/pm2.js
+hooks:
+  BeforeInstall:
+    - location: aws_deploy/pull.sh
+    - location: aws_deploy/build.sh
+      timeout: 600
+  AfterInstall:
+    - location: aws_deploy/restart.sh
+      timeout: 60
+      runas: codedeployuser
