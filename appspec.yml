@@ -1,14 +1,11 @@
 version: 0.0
 os: linux
 files:
-  - source: ./dist
-    destination: /home/ubuntu/server
-  - source: ./aws_deploy/pm2.js
+  - source: aws_deploy/pm2.js
     destination: /home/ubuntu/server/pm2.js
+  - source: dist
+    destination: /home/ubuntu/server
 hooks:
-  BeforeInstall:
-    - location: aws_deploy/e.sh
-      timeout: 600
   AfterInstall:
     - location: aws_deploy/restart.sh
       timeout: 60
