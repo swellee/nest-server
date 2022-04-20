@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+       nodejs: 14
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - yarn
+  build:
+    commands:
+      - echo Build started on `date`
+      - yarn build
+  post_build:
+    commands:
+      - cp aws_deploy/* ./dist/
+      - echo Build done on `date`
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
