@@ -11,6 +11,9 @@ phases:
     commands:
       - echo Build started on `date`
       - yarn build
+  post_build:
+    commands:
+      - ls -l 
 artifacts:
   files:
     - dist
