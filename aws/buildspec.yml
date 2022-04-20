@@ -13,7 +13,7 @@ phases:
       - yarn build
   post_build:
     commands:
-      - cp aws/* dist/
+      - cp aws/* ./dist/
       - echo Build done on `date`
 artifacts:
   files:

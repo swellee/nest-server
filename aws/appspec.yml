@@ -5,6 +5,6 @@ files:
     destination: /home/ubuntu/server
 hooks:
   AfterInstall:
-    - location: ./restart.sh
+    - location: /home/ubuntu/server/restart.sh
       timeout: 60
       runas: codedeployuser
