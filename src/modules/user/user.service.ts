@@ -4,7 +4,6 @@ import { User } from 'src/entities/user.entity';
 import { UserProfile } from 'src/entities/user.profile.entity';
 import { AuthService } from 'src/modules/auth/auth.service';
 import { Role } from 'src/util/const';
-import { cryptoPassword, generateSalt } from 'src/util/crypto';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -30,8 +29,7 @@ export class UserService {
         }
         const user = new User()
         user.email = email
-        user.salt = generateSalt();
-        user.password = cryptoPassword(password, user.salt)
+        user.password = this.authService.genPassword(password)
         user.roles = [role]
         await this.userRepo.save(user)
 
@@ -39,7 +37,6 @@ export class UserService {
         profile.id = user.id
         await this.userProfileRepo.save(profile)
 
-        delete user.salt
         delete user.password
         const token = this.authService.sign(user)
         return { user, token }

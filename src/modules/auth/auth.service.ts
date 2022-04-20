@@ -21,12 +21,16 @@ export class AuthService {
             throw new NotFoundException('user not found')
         }
         // verify
-        if (!compareSync(user.password, hashSync(password, 10))) {
+        if (!compareSync(user.password, this.genPassword(password))) {
             throw new NotFoundException('email or password not match')
         }
         delete user.password
 
         return user;
+    }
+
+    genPassword(password: string) {
+        return hashSync(password, 10)
     }
 
     sign(user: any, extra?: Record<string, string>) {
