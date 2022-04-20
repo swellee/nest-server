@@ -1,1 +1,1 @@
-pm2 startOrRestart /home/ubuntu/server/pm2.js
+pm2 startOrRestart pm2.js

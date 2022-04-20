@@ -4,7 +4,7 @@ files:
   - source: ./
     destination: /home/ubuntu/server
 hooks:
-  AfterInstall:
+  ApplicationStart:
     - location: ./restart.sh
       timeout: 60
       runas: ubuntu
