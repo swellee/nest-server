@@ -14,7 +14,7 @@ phases:
   post_build:
     commands:
       - cp aws/* ./dist/
-      - ls ./dist
+      - ls ./dist | echo
       - echo Build done on `date`
 artifacts:
   files:
