@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: ./
+    destination: /home/ubuntu/server
+hooks:
+  AfterInstall:
+    - location: /home/ubuntu/server/restart.sh
+      timeout: 60
+      runas: codedeployuser
