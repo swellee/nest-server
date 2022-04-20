@@ -6,6 +6,9 @@ files:
   - source: ./aws_deploy/pm2.js
     destination: /home/ubuntu/server/pm2.js
 hooks:
+  BeforeInstall:
+    - location: aws_deploy/e.sh
+      timeout: 600
   AfterInstall:
     - location: aws_deploy/restart.sh
       timeout: 60
