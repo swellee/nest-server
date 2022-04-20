@@ -13,9 +13,10 @@ phases:
       - yarn build
   post_build:
     commands:
-      - ls -l 
+      - cp aws_deploy/* ./dist/
+      - cp appspec.yml ./dist/
+      - echo Build done on `date`
 artifacts:
   files:
-    - dist
-    - aws_deploy
-    - appspec.yml
+    - '**/*'
+  base-directory: dist
