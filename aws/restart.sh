@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 cd;
+source .bashrc;
 echo `ll` > /home/ubuntu/ddd;
 echo `who` >> /home/ubuntu/ddd;
 echo `which bash` >> /home/ubuntu/ddd;
