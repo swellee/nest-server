@@ -1,2 +1,3 @@
+cd
 pwd
-pm2 startOrRestart pm2.js
+pm2 startOrRestart server/pm2.js
