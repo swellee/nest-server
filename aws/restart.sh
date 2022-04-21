@@ -1,7 +1,8 @@
 #!/usr/bin/sh
 cd;
-sh .bashrc; #load node/pm2 to path
-sh .profile;
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 echo `which pm2` > ddd;
 pm2 startOrRestart server/pm2.js;
 if [ $? = 0]; then
