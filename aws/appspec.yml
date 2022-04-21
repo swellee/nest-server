@@ -7,4 +7,3 @@ hooks:
   ApplicationStart:
     - location: ./restart.sh
       timeout: 60
-      # runas: ubuntu
