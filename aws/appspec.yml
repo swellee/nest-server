@@ -3,6 +3,22 @@ os: linux
 files:
   - source: ./
     destination: /home/ubuntu/server
+permissions:
+  - object: /home/ubuntu/server
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+    mode: 644
+    acls: 
+      - u:mary:rw
+      - u:sam:rw
+      - m::rw
+    context:
+      user: ubuntu
+      type: httpd_sys_content_t
+      range: s0
+    type:
+      - file
 hooks:
   ApplicationStart:
     - location: ./restart.sh
